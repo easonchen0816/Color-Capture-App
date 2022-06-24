@@ -13,6 +13,7 @@ main.py
 ```
 ```
 for android phones:
-directly download the apk file(./A-I_extension/capture_color_v1.apk) and install
+directly download the apk file and install
+download link: https://drive.google.com/file/d/1hePFlZXkI1bJg8cKpwo6mz_6pfnd-u9i/view?usp=sharing
 ```
 
