@@ -1,0 +1,83 @@
+<ImagePage>:
+    id: im
+    orientation: 'vertical'
+    rgb: 'RGB: {}'.format((0, 0, 0))
+    xyz: 'CIExyz: {}'.format((0, 0, 0))
+    yxy: 'CIEYxy: {}'.format((0, 0, 0))
+    Image:
+        id: img_det
+        source: "./static/shiba3.jpg"
+        size_hint: (1.0,.9)
+        size_height_y: None
+        width: 100
+        allow_stretch: True
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: (1,.1)
+        spacing: 25
+        padding: 10
+        Label:
+            text: im.rgb
+
+        Label:
+            text: im.xyz
+
+        Label:
+            text: im.yxy
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: (1,.1)
+        spacing: 25
+        padding: 10
+        Button:
+            text: "home"
+          
+            markup: True
+            on_press:root.back_index()
+
+        Button:
+            text: "load"
+           
+            markup: True
+            on_release: root.show_load()
+
+        Button:
+            text: "camera"
+            
+            markup: True
+            on_press:root.back_video()
+
+
+
+<LoadDialog>:
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserIconView:
+            id: filechooser
+            rootpath: root.cwdir
+            filters: ['*.jpg',"*.png","*.bmp","*.jpeg"]
+            on_selection: text_input.text = self.selection and self.selection[0] or ''
+
+        TextInput:
+            id: text_input
+            size_hint_y: .1
+            multiline: False
+
+
+        BoxLayout:
+            size_hint_y: .1
+            spacing: 30
+            Button:
+                text: "back"
+                on_release: root.cancel()
+                markup: True
+                # font_name: './static/DroidSansFallback.ttf'
+            Button:
+                text: "load"
+                on_release: root.load(filechooser.path,text_input.text)
+                markup: True
+                # font_name: './static/DroidSansFallback.ttf'
+
+            

@@ -1,0 +1,59 @@
+<CameraWidget>:
+    
+    # resolution: (640,480)
+    play: True
+    keep_ratio: True
+    allow_stretch: True
+    
+    
+    canvas.before:
+        PushMatrix
+        Rotate:
+            angle: root.angle
+            axis: 0, 0, 1
+            origin: root.center
+    canvas.after:
+        PopMatrix
+
+    orientation: 'vertical'
+    vrgb: 'RGB: {}'.format((0, 0, 0))
+    vxyz: 'CIExyz: {}'.format((0, 0, 0))
+    vyxy: 'CIEYxy: {}'.format((0, 0, 0))
+
+<VideoPage>:
+    orientation: 'vertical'
+    
+    CameraWidget:
+        id: camera
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: (1,.1)
+        spacing: 50
+        padding: 30
+        Label:
+            text: camera.vrgb
+
+        Label:
+            text: camera.vxyz
+
+        Label:
+            text: camera.vyxy
+           
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: (1,.1)
+        spacing: 25
+        padding: 10
+
+        Button:
+            text: "back"
+            markup: True
+            on_press:root.back_image()
+
+        Button:
+            text: "home"
+            markup: True
+            on_release: root.back_index_1()
+
+
+    

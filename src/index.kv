@@ -1,0 +1,20 @@
+#: import C kivy.utils.get_color_from_hex
+<IndexPage>:
+
+    canvas.before:
+        Color: 
+            rgba: [1,1,1,1]
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: './static/shiba.jpg'
+
+    Label:
+        id: 'title_label'
+        text: '[ref="click"]Capture Color[/ref]'
+        color: C('#EEEEEE')
+        font_size: 72  # 24
+        pos_hint: {"center_x":0.5,"y":0.1}
+        markup: True
+        on_ref_press: root.page_go()
+
